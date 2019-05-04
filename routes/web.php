@@ -11,10 +11,28 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::group(['middleware' => ['web']], function () {
+
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::get('/home', function () {
+        return redirect('projects');
+    });
+
+    Route::get('/projects', 'ProjectController@index');
+    Route::post('/project', 'ProjectController@store');
+    Route::delete('/project/{project}', 'ProjectController@destroy');
+
+    Route::get('/tasks', 'TaskController@index');
+    Route::post('/task', 'TaskController@store');
+    Route::delete('/task/{task}', 'TaskController@destroy');
+
+    Auth::routes();
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+    
