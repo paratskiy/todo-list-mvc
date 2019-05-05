@@ -33,29 +33,20 @@ class ProjectController extends Controller
     {
         $projects = Project::where('user_id', $request->user()->id)->get();
 
-
-
         for ($i = 0; $i < count($projects); $i++) {
 
             $project = Project::find($projects[$i]->id);
 
             $tasks = $project->tasks;
 
-            // $tasks = Task::where('project_id', $projects[$i]->id);
-
-
-
             if (!$tasks) {
                 continue;
             }
+
             $project_tasks = array();
+
             for ($j = 0; $j < count($tasks); $j++) {
-                // $projects[$i] += ['task' => $tasks[$j]];
-                // $arr += array($tasks[$j]);
                 $project_tasks += [$j => $tasks[$j]];
-                // $arr += ['key1'=>5];
-                // $projects[$i]->tasks[] += $tasks[$j];
-                // $projects[$i]->tasks += ['key1'=>5];
             }
 
             $projects[$i]['tasks'] = $project_tasks;
@@ -86,16 +77,16 @@ class ProjectController extends Controller
         return redirect('/projects');
     }
 
-    
+
     /**
-     * Edit project.
+     * Edit the given project.
      *
      * @param  Request  $request
      * @return Response
      */
     public function edit(Request $request, Project $project)
     {
-        $this->authorize('destroy', $project);
+        $this->authorize('edit', $project);
 
         $this->validate($request, [
             'name' => 'required|max:255',
@@ -124,12 +115,11 @@ class ProjectController extends Controller
 
         $tasks = $project->tasks;
 
-        for ($i=0; $i < count($tasks); $i++) { 
+        for ($i = 0; $i < count($tasks); $i++) {
             $task = $tasks[$i];
             $task->delete();
         }
 
         return redirect('/projects');
     }
-
 }

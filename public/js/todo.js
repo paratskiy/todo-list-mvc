@@ -14,6 +14,4 @@ function edit(elem){
 
     console.log(editInput);
 
-
-
 }
