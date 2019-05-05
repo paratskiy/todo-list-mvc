@@ -12,36 +12,14 @@ class TodoList {
 
         this.addTodoListBtn = document.querySelector('#add-todo-list');
 
-        this.todoListName = (this.name) ? this.name : '';
+        this.editTodoListBtn = document.querySelector('.todo-list-header .edit');
+        this.deleteTodoListBtn = document.querySelector('.todo-list-header .delete');
 
-        this.logoTodoList = this.createElement('i', { class: 'far fa-calendar-alt calendar' });
-        this.editTodoTitle = this.createElement('input', { type: 'text', name: 'edit-todo-title', class: 'edit edit-todo-title hide', value: this.todoListName });
-        this.titleTodoList = this.createElement('label', { class: 'title todo-title' }, this.todoListName);
-        this.editTodoListBtn = this.createElement('i', { class: 'fas fa-pen edit' });
-        this.deleteTodoListBtn = this.createElement('i', { class: 'far fa-trash-alt delete' });
+        this.addTodoItemBtn = document.querySelector('.add-todo-item-btn');
 
-
-        this.todoListHeader = this.createElement('form', {
-            class: 'todo-list-header',
-            onsubmit: 'return false'
-        }, this.logoTodoList, this.titleTodoList, this.editTodoTitle, this.editTodoListBtn, this.deleteTodoListBtn);
-
-        this.logoAddTodoItem = this.createElement('i', { class: 'fas fa-plus' });
-        this.inputAddTodoItem = this.createElement('input', {
-            type: 'text',
-            name: 'add-todo-item',
-            class: 'add-todo-item',
-            placeholder: 'Start typing here to create a task...'
-        });
-
-        this.addTodoItemBtn = this.createElement('button', { class: 'add-todo-item-btn', type: 'button' }, 'Add Task');
-        this.createTodoItem = this.createElement('form', {
-            class: 'create-todo-item',
-            onsubmit: 'return false'
-        }, this.logoAddTodoItem, this.inputAddTodoItem, this.addTodoItemBtn);
-
-        this.todoList = this.createElement('ul', { class: 'todo-list' });
-        this.todoListWrap = this.createElement('div', { class: 'todo-list-wrap' }, this.todoListHeader, this.createTodoItem, this.todoList);
+        this.inputAddTodoItem = document.querySelector('.add-todo-item');
+        this.todoListWrap = document.querySelector('.todo-list-wrap');
+        this.editTodoTitle = document.querySelector('.edit-todo-title');
 
         this.todoListWrap.dataset.projectName = '';
         this.todoListWrap.dataset.projectId = '';
@@ -49,48 +27,25 @@ class TodoList {
 
     }
 
-    createTodoList() {
+    bindEvents() {
         console.log(this);
-
-        this.parent.insertBefore(this.todoListWrap, this.addTodoListBtn);
-
-        if (this.data) {
-
-            this.todoListWrap.dataset.projectId = this.data.project_id;
-            this.todoListWrap.dataset.projectName = this.name;
-
-            for (const key in this.data) {
-
-                if (this.data.hasOwnProperty(key) && typeof this.data[key] != 'string') {
-
-                    const element = this.data[key];
-                    const todoItem = new TodoItem(this.todoList, element.task_name, this.data.project_id, element.status, element.id);
-                    todoItem.addTodoItem();
-
-                }
-
-            }
-
-        }
 
         this.addTodoItemBtn.addEventListener('click', () => {
 
-            if (this.isValid(this.inputAddTodoItem)) {
+            console.log('add todo item');
+            // if (this.isValid(this.inputAddTodoItem)) {
 
-                const todoItem = new TodoItem(this.todoList, this.inputAddTodoItem.value, this.todoListWrap.dataset.projectId);
-                let taskInfo = todoItem.addTodoItem();
+            //     this.insertTodoList(taskInfo);
 
-                this.insertTodoList(taskInfo);
+            //     this.inputAddTodoItem.value = '';
 
-                this.inputAddTodoItem.value = '';
+            //     if (taskInfo) {
+            //         console.log(taskInfo);
+            //     }
 
-                if (taskInfo) {
-                    console.log(taskInfo);
-                }
-
-            } else {
-                console.log('invalid');
-            }
+            // } else {
+            //     console.log('invalid');
+            // }
 
         });
 
@@ -175,7 +130,7 @@ class TodoList {
                     if (response.hasOwnProperty(key)) {
                         const element = response[key];
                         const todoList = new TodoList(parentNode, false, key, element);
-                        todoList.createTodoList();
+                        // todoList.createTodoList();
                     }
                 }
 
@@ -359,15 +314,12 @@ class TodoItem extends TodoList {
         this.task_id = task_id;
         this.project_id = project_id || '';
 
-        this.todoItemName = (this.name_from_db) ? this.name_from_db : this.name;
-        this.isComlete = (this.status == 0) ? false : true;
-
-        this.completeCheckbox = this.createElement('input', { type: 'checkbox', name: 'done', class: 'done' });
-        this.itemTitle = this.createElement('label', { class: 'title item-title' }, this.todoItemName);
-        this.editItemTitle = this.createElement('input', { type: 'text', name: 'edit-item-title', class: 'edit edit-item-title hide', value: this.todoItemName });
         this.editItemBtn = this.createElement('i', { class: 'fas fa-pen edit' });
         this.deleteItemBtn = this.createElement('i', { class: 'far fa-trash-alt delete' });
-        this.todoItem = this.createElement('li', { class: 'todo-item' }, this.completeCheckbox, this.itemTitle, this.editItemTitle, this.editItemBtn, this.deleteItemBtn);
+
+        this.todoItem = document.querySelector('.todo-item');
+        this.editItemTitle = document.querySelector('.edit-item-title');
+        this.completeCheckbox = document.querySelector('input[type=checkbox]');
 
         this.todoItem.dataset.taskName = this.todoItemName;
         this.todoItem.dataset.taskId = '';
@@ -378,13 +330,11 @@ class TodoItem extends TodoList {
     }
 
 
-    addTodoItem() {
+    bindEvent() {
 
-        this.todoList.appendChild(this.todoItem);
-
+        
         this.deleteItemBtn.addEventListener('click', () => {
-            console.log(this.todoItem.dataset.taskId);
-
+            
             let taskInfo = this.deleteElement(this.todoItem);
 
             if (taskInfo) {

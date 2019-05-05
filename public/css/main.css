@@ -54,6 +54,14 @@ span.title > span{
     vertical-align: middle;
 }
 
+i.delete{
+    position: absolute;
+}
+
+button.delete {
+    position: absolute;
+}
+
 input{
     box-sizing: border-box;
     height: 30px;
@@ -88,12 +96,12 @@ label.title.hide{
     display: none !important;
 }
 
-form{
+form, div{
     padding: 10px;
     box-sizing: border-box;
 }
 
-form.todo-list-header{
+div.todo-list-header{
     width: 700px;
     height: 50px;
     background: rgb(109,179,242); /* Old browsers */
@@ -120,16 +128,20 @@ label.todo-title{
     line-height: unset;
 }
 
-form.todo-list-header i {
+div.todo-list-header i {
     cursor: pointer;
     font-size: 18px;
     color: #ffffffcf;
 }
 
-form.todo-list-header i.calendar {
+div.todo-list-header i.calendar {
     color: #484848;
     font-size: 25px;
     cursor: unset;
+}
+
+form.delete {
+    display: inline-block;
 }
 
 form.create-todo-item{

@@ -22,7 +22,6 @@ class TaskController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-
     }
 
     /**
@@ -38,23 +37,23 @@ class TaskController extends Controller
         // ]);
 
         $projects = Project::where('user_id', $request->user()->id)->get();
-        
-        $project_tasks = array(); 
 
-        for ($i=0; $i < count($projects); $i++) { 
-            
+        $project_tasks = array();
+
+        for ($i = 0; $i < count($projects); $i++) {
+
             $project = Project::find($projects[$i]->id);
 
-            $tasks = $project->tasks;          
-                   
-            if (!$tasks) { continue; }
-            
-            for ($j=0; $j < count($tasks); $j++) { 
-        
-                $project_tasks += [$j => $tasks[$j]];
-                
+            $tasks = $project->tasks;
+
+            if (!$tasks) {
+                continue;
             }
 
+            for ($j = 0; $j < count($tasks); $j++) {
+
+                $project_tasks += [$j => $tasks[$j]];
+            }
         }
 
         $tasks = $project_tasks;
@@ -62,7 +61,26 @@ class TaskController extends Controller
         return view('tasks.index', [
             'tasks' => $tasks,
         ]);
+    }
 
+
+     /**
+     * Create a new task.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|max:255',
+        ]);
+
+        $request->project()->tasks()->create([
+            'name' => $request->name,
+        ]);
+    
+        return redirect('/tasks');
     }
 
 }
