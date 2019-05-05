@@ -10,17 +10,23 @@ body{
     background: linear-gradient(to bottom, rgba(246,230,180,1) 6%,rgba(237,144,23,1) 100%) no-repeat; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 
+#app, .container, .navbar{
+    padding: 0;
+}
+
 i{
     margin-right: 10px;
 }
 
-/* .wrap{
-    min-height: 100% !important;
-} */
+.navbar-laravel {
+    color: #fff;
+    background-color: transparent;
+    box-shadow: none;
+}
 
 header{
     text-align: center;
-    padding: 50px;
+    padding: 10px;
 }
 
 header span{
@@ -40,7 +46,8 @@ span.title > span{
 }
 
 .todo-list-wrap{
-    margin-bottom: 50px;
+    width: 100%;
+    margin-bottom: 35px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -54,12 +61,10 @@ span.title > span{
     vertical-align: middle;
 }
 
-i.delete{
-    position: absolute;
-}
-
 button.delete-btn {
-    position: absolute;
+    background: none;
+    padding: 0;
+    border: none;
 }
 
 input{
@@ -67,9 +72,9 @@ input{
     height: 30px;
 }
 
-form.edit input{
+/* form.edit input{
     
-}
+} */
 
 form.edit {
     display: inline-block;
@@ -78,7 +83,7 @@ form.edit {
     background: none;
     border: none;
     outline: none;
-    width: 85%;
+    width: 84%;
     margin-left: 10px;
     color: #fff;
     font-weight: 600;
@@ -123,7 +128,7 @@ label.todo-title{
     border: none;
     outline-offset: 0px !important;
     outline: none;
-    width: 85%;
+    width: 84%;
     margin-left: 10px;
     color: #fff;
     font-weight: 600;
@@ -147,6 +152,7 @@ div.todo-list-header i.calendar {
 
 form.delete {
     display: inline-block;
+    padding: 0;
 }
 
 form.create-todo-item{
@@ -214,14 +220,19 @@ li.todo-item:not(:last-child){
     border-bottom: 1px solid #d8d8d8;
 }
 
-li.todo-item.complete label{
+li.todo-item input[type='checkbox']:checked ~ label{
     text-decoration: line-through;
+}
+
+form.change-status-form{
+    display: inline;
+    padding: 0;
 }
 
 label.title.item-title {
     color: #9e9e9e;
     display: inline-block;
-    width: 85%;
+    width: 84%;
 }
 
 .li.todo-item:before {
@@ -231,33 +242,22 @@ label.title.item-title {
     content: "";
 }
 
-input.done, label.title.item-title, i {
+label.title.item-title, i {
     display: inline-block;
     vertical-align: middle;
+    font-size: 16px;
 }
 
-input.done{
+form.change-status-form {
+    text-align: center;
+    display: inline-block;
+    padding: 0;
     width: 5%;
 }
 
 .todo-item i {
     color: #9e9e9e;
 }
-
-/* form.edit.edit-item-title {
-    width: 85%;
-    background: none;
-    border: none;
-    outline: none;
-    outline-offset: unset;
-    display: inline-block;
-    vertical-align: middle;
-    color: #9e9e9e;
-} */
-
-/* input.edit.edit-item-title.hide {
-    display: none !important;
-} */
 
 #add-todo-list i.fas.fa-plus {
     margin-right: 10px;
@@ -269,7 +269,7 @@ input.done{
     cursor: pointer;
     font-weight: 600;
     font-size: 18px;
-    margin: 50px auto;
+    margin: 20px auto;
     width: 50%;
     max-width: 200px;
     height: 40px;
@@ -280,19 +280,6 @@ input.done{
     background: -moz-linear-gradient(top, rgba(109,179,242,1) 0%, rgba(54,144,240,1) 40%, rgba(54,144,240,1) 40%, rgba(30,105,222,1) 100%); /* FF3.6-15 */
     background: -webkit-linear-gradient(top, rgba(109,179,242,1) 0%,rgba(54,144,240,1) 40%,rgba(54,144,240,1) 40%,rgba(30,105,222,1) 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to bottom, rgba(109,179,242,1) 0%,rgba(54,144,240,1) 40%,rgba(54,144,240,1) 40%,rgba(30,105,222,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-}
-
-
-input[name="login"], input[name="password"], input[name="confirm-password"] {
-    display: block;
-    border: 1px solid #ccc;
-    margin: 5px auto;
-    border-radius: 0%;
-    width: 250px;
-    height: 40px;
-    font-size: 15px;
-    font-weight: 700;
-    text-align: center;
 }
 
 .btn-wrap {
@@ -315,13 +302,7 @@ input[name="login"], input[name="password"], input[name="confirm-password"] {
     background: linear-gradient(to bottom, rgba(109,179,242,1) 0%,rgba(54,144,240,1) 40%,rgba(54,144,240,1) 40%,rgba(30,105,222,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 
-span.autho-user {
-    display: block;
-    text-align: center;
-    color: #515151;
+.panel-body {
+    padding: 0;
+    width: 50%;
 }
-
-span.autho-user span{
-    color: blue;
-}
-
