@@ -26,10 +26,12 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('/projects', 'ProjectController@index');
     Route::post('/project', 'ProjectController@store');
+    Route::post('/project/edit/{project}', 'ProjectController@edit');
     Route::delete('/project/{project}', 'ProjectController@destroy');
 
     Route::get('/tasks', 'TaskController@index');
     Route::post('/task/{project_id}', 'TaskController@store');
+    Route::post('/task/edit/{task}', 'TaskController@edit');
     Route::delete('/task/{task}', 'TaskController@destroy');
 
     Auth::routes();

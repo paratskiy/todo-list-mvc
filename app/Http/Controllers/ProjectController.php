@@ -86,6 +86,28 @@ class ProjectController extends Controller
         return redirect('/projects');
     }
 
+    
+    /**
+     * Edit project.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function edit(Request $request, Project $project)
+    {
+        $this->authorize('destroy', $project);
+
+        $this->validate($request, [
+            'name' => 'required|max:255',
+        ]);
+
+        $project->update([
+            'name' => $request->name,
+        ]);
+
+        return redirect('/projects');
+    }
+
 
     /**
      * Destroy the given project.

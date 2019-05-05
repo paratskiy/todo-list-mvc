@@ -90,6 +90,30 @@ class TaskController extends Controller
         return redirect('/projects');
     }
 
+
+    /**
+     * Destroy the given task.
+     *
+     * @param  Request  $request
+     * @param  Task  $task
+     * @return Response
+     */
+    public function edit(Request $request, Task $task)
+    {
+        // $this->authorize('destroy', $task);
+
+        $this->validate($request, [
+            'name' => 'required|max:255',
+        ]);
+
+        $task->update([
+            'name' => $request->name,
+        ]);
+
+        // return redirect('/projects');
+    }
+
+
     /**
      * Destroy the given task.
      *
@@ -99,7 +123,7 @@ class TaskController extends Controller
      */
     public function destroy(Request $request, Task $task)
     {
-        $this->authorize('destroy', $task);
+        // $this->authorize('destroy', $task);
 
         $task->delete();
 

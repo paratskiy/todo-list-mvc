@@ -23,9 +23,18 @@
                         <div class="todo-list-header">
                             <i class="far fa-calendar-alt calendar"></i>
                             <label class="title todo-title">{{ $project->name }} </label>
-                            <input type="text" name="edit-todo-title" class="edit edit-todo-title hide" value="{{ $project->name }}">
-                            <i class="fas fa-pen edit" onclick="console.log(this.parentNode)"></i>
-                            <!-- <i class="far fa-trash-alt delete"></i> -->
+
+                            <!-- <input type="text" name="edit-todo-title" class="edit edit-todo-title hide" value="{{ $project->name }}"> -->
+
+                            <form action="{{ url('project/edit/'.$project->id) }}" method="POST" class="edit edit-todo-list hide">
+                                {{ csrf_field() }}
+
+                                <input type="text" name="name" class="edit edit-todo-title hide" value="{{ $project->name }}">
+                                <button class="add-todo-item-btn" type="submit" onclick="console.log(this)">Add Item</button>
+                            </form>
+
+                            <i class="fas fa-pen edit" onclick="edit(this)"></i>
+
                             <form action="{{ url('project/'.$project->id) }}" method="POST" class="delete">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
@@ -55,15 +64,25 @@
                             <li class="todo-item" data-id="{{ $task->id }}">
                                 <input type="checkbox" name="done" class="done">
                                 <label class="title item-title">{{ $task->name }}</label>
-                                <input type="text" name="edit-item-title" class="edit edit-item-title hide" value="{{ $task->name }}">
-                                <i class="fas fa-pen edit"></i>
-                                
+
+                                <!-- <input type="text" name="edit-item-title" class="edit edit-item-title hide" value="{{ $task->name }}"> -->
+
+                                <form action="{{ url('task/edit/'.$task->id) }}" method="POST" class="edit edit-todo-list hide">
+                                    {{ csrf_field() }}
+
+                                    <input type="text" name="name" class="edit edit-item-title hide" value="{{ $task->name }}">
+                                    <button class="add-todo-item-btn" type="submit" onclick="console.log(this)">Add Item</button>
+
+                                </form>
+
+                                <i class="fas fa-pen edit" onclick="edit(this)"></i>
+
                                 <form action="{{ url('task/'.$task->id) }}" method="POST" class="delete">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
 
                                     <button type="submit" id="delete-task-{{ $task->id }}" class="btn btn-danger delete-btn">
-                                    <i class="far fa-trash-alt delete"></i>
+                                        <i class="far fa-trash-alt delete"></i>
                                     </button>
                                 </form>
 

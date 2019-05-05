@@ -67,7 +67,12 @@ input{
     height: 30px;
 }
 
-input.edit.edit-todo-title {
+form.edit input{
+    
+}
+
+form.edit {
+    display: inline-block;
     height: auto;
     padding: 0;
     background: none;
@@ -88,7 +93,7 @@ input.edit.edit-todo-title {
     height: auto;
 }
 
-input.edit.hide{
+form.edit.hide{
     display: none;
 }
 
@@ -239,7 +244,7 @@ input.done{
     color: #9e9e9e;
 }
 
-input.edit.edit-item-title {
+/* form.edit.edit-item-title {
     width: 85%;
     background: none;
     border: none;
@@ -248,11 +253,11 @@ input.edit.edit-item-title {
     display: inline-block;
     vertical-align: middle;
     color: #9e9e9e;
-}
+} */
 
-input.edit.edit-item-title.hide {
+/* input.edit.edit-item-title.hide {
     display: none !important;
-}
+} */
 
 #add-todo-list i.fas.fa-plus {
     margin-right: 10px;
