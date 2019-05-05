@@ -100,6 +100,13 @@ class ProjectController extends Controller
 
         $project->delete();
 
+        $tasks = $project->tasks;
+
+        for ($i=0; $i < count($tasks); $i++) { 
+            $task = $tasks[$i];
+            $task->delete();
+        }
+
         return redirect('/projects');
     }
 

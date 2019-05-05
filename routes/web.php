@@ -29,10 +29,21 @@ Route::group(['middleware' => ['web']], function () {
     Route::delete('/project/{project}', 'ProjectController@destroy');
 
     Route::get('/tasks', 'TaskController@index');
-    Route::post('/task', 'TaskController@store');
+    Route::post('/task/{project_id}', 'TaskController@store');
     Route::delete('/task/{task}', 'TaskController@destroy');
 
     Auth::routes();
 });
 
+    
+// Route::group(['middleware' => 'auth'], function () {
+//     Route::get('/', 'ProjectController@index');
+    
+//     Route::get('/projects/{id}', 'ProjectController@show');
+//     Route::post('/create','ProjectController@store');
+//     Route::get('/create', 'ProjectController@create');
+//     Route::get('/projects/{id}/delete', 'ProjectController@destroy');
+//     Route::put('/edit','ProjectController@update');
+//     Route::get('/projects/{id}/edit', 'ProjectController@edit');
+    
     

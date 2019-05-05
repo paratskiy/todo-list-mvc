@@ -64,23 +64,45 @@ class TaskController extends Controller
     }
 
 
-     /**
+    /**
      * Create a new task.
      *
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Task $tasks)
     {
-        $this->validate($request, [
-            'name' => 'required|max:255',
-        ]);
+        // $this->validate($request, [
+        //     'name' => 'required|max:255',
+        // ]);
 
-        $request->project()->tasks()->create([
+        // $project_id = $request->get('project_id');
+
+        
+
+        $tasks->create([
             'name' => $request->name,
+            'project_id' => $request->project_id,
         ]);
-    
-        return redirect('/tasks');
+        
+        // return [$request->project_id, $request->name];
+
+        return redirect('/projects');
     }
 
+    /**
+     * Destroy the given task.
+     *
+     * @param  Request  $request
+     * @param  Task  $task
+     * @return Response
+     */
+    public function destroy(Request $request, Task $task)
+    {
+        $this->authorize('destroy', $task);
+
+        $task->delete();
+
+        return redirect('/projects');
+    }
 }
