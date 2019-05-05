@@ -15,7 +15,7 @@
 Route::group(['middleware' => ['web']], function () {
 
     Route::get('/', function () {
-        return view('welcome');
+        return redirect('login');
     });
 
     Route::get('/home', 'HomeController@index')->name('home');
@@ -26,13 +26,14 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('/projects', 'ProjectController@index');
     Route::post('/project', 'ProjectController@store');
+    Route::post('/project/edit/{project}', 'ProjectController@edit');
     Route::delete('/project/{project}', 'ProjectController@destroy');
 
     Route::get('/tasks', 'TaskController@index');
-    Route::post('/task', 'TaskController@store');
+    Route::post('/task/{project_id}', 'TaskController@store');
+    Route::post('/task/edit/{task}', 'TaskController@edit');
+    Route::post('/task/status/{task}', 'TaskController@changeStatus');
     Route::delete('/task/{task}', 'TaskController@destroy');
 
     Auth::routes();
 });
-
-    

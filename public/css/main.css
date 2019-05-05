@@ -1,0 +1,349 @@
+html, body{
+    min-height: 100% !important;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    background: rgb(246,230,180); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(246,230,180,1) 6%, rgba(237,144,23,1) 100%) no-repeat; /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(246,230,180,1) 6%,rgba(237,144,23,1) 100%) no-repeat; /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(246,230,180,1) 6%,rgba(237,144,23,1) 100%) no-repeat; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+#app, .container, .navbar{
+    padding: 0;
+}
+
+i{
+    margin-right: 10px;
+}
+
+.navbar-laravel {
+    color: #fff;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+header{
+    text-align: center;
+    padding: 10px;
+}
+
+header span{
+    display: block;
+    text-transform: uppercase;
+    color: #515151;
+}
+
+span.title{
+    font-size: 30px;
+    font-weight: 500;
+}
+
+span.title > span{
+    font-size: 20px;
+    font-weight: 400;    
+}
+
+.todo-list-wrap{
+    width: 100%;
+    margin-bottom: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo-list-wrap i {
+    cursor: pointer;
+    height: 30px;
+    line-height: 30px;
+    vertical-align: middle;
+}
+
+button.delete-btn:focus{
+    outline: none;
+}
+
+button.delete-btn {
+    background: none;
+    padding: 0;
+    border: none;
+}
+
+input{
+    box-sizing: border-box;
+    height: 30px;
+}
+
+input.edit{
+    border: 1px solid #fff;
+    border-radius: .25rem 0 0 .25rem;
+    background: none;
+    color: #fff;
+    font-weight: 600;
+    margin: 0;
+    box-sizing: border-box;
+    height: 100%;
+    outline: none;
+    padding-left: 5px;
+    height: 27px;
+    border-right: none;
+}
+
+input.edit.edit-item-title {
+    border-color: #9e9e9e;
+    color: #9e9e9e;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+form.edit.edit-todo-list {
+    margin-left: 10px;
+}
+
+form.edit {
+    position: relative;
+    display: inline-block;
+    height: auto;
+    padding: 0;
+    background: none;
+    border: none;
+    outline: none;
+    width: 84%;
+    color: #fff;
+    font-weight: 600;
+    font-size: 20px;
+    box-sizing: border-box;
+    height: 100%;
+    vertical-align: middle;
+    outline-offset: unset;
+}
+
+button.edit-todo-item-btn, button.edit-todo-list-btn {
+    height: 27px;
+    top: 3px;
+    position: absolute;
+    box-sizing: border-box;
+    border: none;
+    background: rgb(201,222,150);
+    background: -moz-linear-gradient(top, rgba(201,222,150,1) 0%, rgba(138,182,107,1) 44%, rgba(57,130,53,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(201,222,150,1) 0%,rgba(138,182,107,1) 44%,rgba(57,130,53,1) 100%);
+    background: linear-gradient(to bottom, rgba(201,222,150,1) 0%,rgba(138,182,107,1) 44%,rgba(57,130,53,1) 100%);
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+}
+
+[type="checkbox"]{
+    height: auto;
+}
+
+form.edit.hide{
+    display: none;
+}
+
+label.title.hide{
+    display: none !important;
+}
+
+form, div{
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+div.todo-list-header{
+    width: 700px;
+    height: 50px;
+    background: rgb(109,179,242); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(109,179,242,1) 0%, rgba(54,144,240,1) 40%, rgba(54,144,240,1) 40%, rgba(30,105,222,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(109,179,242,1) 0%,rgba(54,144,240,1) 40%,rgba(54,144,240,1) 40%,rgba(30,105,222,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(109,179,242,1) 0%,rgba(54,144,240,1) 40%,rgba(54,144,240,1) 40%,rgba(30,105,222,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+label.todo-title{
+    vertical-align: -webkit-baseline-middle;
+    display: inline-block;
+    padding: 0;
+    background: none;
+    border: none;
+    outline-offset: 0px !important;
+    outline: none;
+    width: 84%;
+    margin-left: 10px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 20px;
+    box-sizing: border-box;
+    height: 100%;
+    line-height: unset;
+}
+
+div.todo-list-header i {
+    cursor: pointer;
+    font-size: 18px;
+    color: #ffffffcf;
+}
+
+div.todo-list-header i.calendar {
+    color: #484848;
+    font-size: 25px;
+    cursor: unset;
+}
+
+form.delete {
+    display: inline-block;
+    padding: 0;
+}
+
+form.create-todo-item{
+    width: 700px;
+    height: 50px;
+    position: relative;
+    background: rgb(238,238,238); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(238,238,238,1) 0%, rgba(204,204,204,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+input.add-todo-item {
+    width: 78%;
+    border: none;
+    padding-left: 10px;
+}
+
+i.fas.fa-plus{
+    cursor: unset;
+}
+
+form.create-todo-item i {
+    font-size: 25px;
+    color: rgb(140, 162, 84);
+    height: 30px;
+    vertical-align: middle;
+}
+
+form.create-todo-item button {
+    cursor: pointer;
+    height: 30px;
+    position: absolute;
+    top: 10px;
+    width: 15%;
+    height: 30px;
+    background: rgb(201,222,150); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(201,222,150,1) 0%, rgba(138,182,107,1) 44%, rgba(57,130,53,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(201,222,150,1) 0%,rgba(138,182,107,1) 44%,rgba(57,130,53,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(201,222,150,1) 0%,rgba(138,182,107,1) 44%,rgba(57,130,53,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    color: #fff;
+    border: none;
+    border-radius: 0 5px 5px 0;
+}
+
+ul.todo-list{
+    margin: 0;
+    padding: 0;
+}
+
+li.todo-item{
+    line-height: 30px;
+    list-style-type: none;
+    width: 700px;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+li.todo-item:last-child{
+    border-radius: 0 0 20px 20px;
+}
+
+li.todo-item:not(:last-child){
+    border-bottom: 1px solid #d8d8d8;
+}
+
+li.todo-item input[type='checkbox']:checked ~ label{
+    text-decoration: line-through;
+}
+
+form.change-status-form{
+    display: inline;
+    padding: 0;
+}
+
+label.title.item-title {
+    margin: 0;
+    color: #9e9e9e;
+    display: inline-block;
+    width: 84%;
+}
+
+.li.todo-item:before {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    content: "";
+}
+
+label.title.item-title, i {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 16px;
+}
+
+form.change-status-form {
+    text-align: center;
+    display: inline-block;
+    padding: 0;
+    width: 5%;
+}
+
+.todo-item i {
+    color: #9e9e9e;
+}
+
+#add-todo-list i.fas.fa-plus {
+    margin-right: 10px;
+    /* font-size: 25px; */
+    color: #12479a;
+}
+
+#add-todo-list{
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 18px;
+    margin: 20px auto;
+    width: 50%;
+    max-width: 200px;
+    height: 40px;
+    color: #fff;
+    border: none;
+    display: block;
+    background: rgb(109,179,242); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(109,179,242,1) 0%, rgba(54,144,240,1) 40%, rgba(54,144,240,1) 40%, rgba(30,105,222,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(109,179,242,1) 0%,rgba(54,144,240,1) 40%,rgba(54,144,240,1) 40%,rgba(30,105,222,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(109,179,242,1) 0%,rgba(54,144,240,1) 40%,rgba(54,144,240,1) 40%,rgba(30,105,222,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+.btn-wrap {
+    text-align: center;
+}
+
+.btn-wrap button, button.sign-out{
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 18px;
+    margin: 10px auto;
+    padding: 0px 15px;
+    height: 30px;
+    color: #fff;
+    border: none;
+    display: block;
+    background: rgb(109,179,242); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(109,179,242,1) 0%, rgba(54,144,240,1) 40%, rgba(54,144,240,1) 40%, rgba(30,105,222,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(109,179,242,1) 0%,rgba(54,144,240,1) 40%,rgba(54,144,240,1) 40%,rgba(30,105,222,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(109,179,242,1) 0%,rgba(54,144,240,1) 40%,rgba(54,144,240,1) 40%,rgba(30,105,222,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+.panel-body {
+    padding: 0;
+    width: 50%;
+}
