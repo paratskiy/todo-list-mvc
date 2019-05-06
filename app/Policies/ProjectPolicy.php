@@ -31,5 +31,17 @@ class ProjectPolicy
     {
         return $user->id === $project->user_id;
     }
+    
+    /**
+     * Determine if the given user can edit the given project.
+     *
+     * @param  User  $user
+     * @param  Project  $project
+     * @return bool
+     */
+    public function edit(User $user, Project $project)
+    {
+        return $user->id === $project->user_id;
+    }
 
 }
